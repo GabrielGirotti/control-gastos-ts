@@ -1,12 +1,12 @@
 type AmountDisplayProps = {
-  label: string;
+  label?: string;
   amount: number;
 };
 
 export default function AmountDisplay({ label, amount }: AmountDisplayProps) {
   return (
-    <p className=" text-2xl text-blue-600 font-bold">
-      {label}: <span className=" font-black text-blue-700">${amount}</span>
+    <p className=" text-2xl text-slate-600 font-bold">
+    {label && `${label}:`}   <span className=" font-black text-slate-600">${amount}</span>
     </p>
   );
 }

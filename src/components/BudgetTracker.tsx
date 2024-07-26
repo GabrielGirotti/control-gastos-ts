@@ -14,12 +14,14 @@ export default function BudgetTracker() {
         >
           Reset App
         </button>
+<div className=" flex flex-col gap-4 justify-start w-full px-4">
+<AmountDisplay label={"Presupuesto"} amount={10} />
 
-        <AmountDisplay label={"Presupuesto"} amount={10} />
+<AmountDisplay label={"Disponible"} amount={2} />
 
-        <AmountDisplay label={"Disponible"} amount={2} />
+<AmountDisplay label={"Gastado"} amount={8} />
+</div>
 
-        <AmountDisplay label={"Gastado"} amount={8} />
       </div>
     </div>
   );
