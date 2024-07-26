@@ -12,18 +12,18 @@ function App() {
 
   return (
     <>
-      <header className=" bg-white py-8 max-h-72 shadow-lg ">
-        <h1 className=" text-center font-black text-2xl text-slate-700 font-lato">
+      <header className=" bg-slate-900 py-8 max-h-72 shadow-lg ">
+        <h1 className=" text-center font-black text-2xl text-white font-lato">
           Control de Gastos
         </h1>
       </header>
 
-      <div className=" max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10 p-10">
+      <div className=" sm:max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10 p-10 w-[90vw] ">
         {isValid ? <BudgetTracker /> : <BudgetForm />}
       </div>
 
       {isValid && (
-        <main className=" max-w-3xl mx-auto py-10">
+        <main className=" sm:max-w-3xl mx-auto py-10 w-[90vw] ">
           <ExpenseList/>
           <ExpenseModal />{" "}
         </main>

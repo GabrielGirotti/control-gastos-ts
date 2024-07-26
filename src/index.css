@@ -11,10 +11,10 @@
   @apply text-white text-lg uppercase font-bold font-lato;
 }
 .swipeable-list-item__leading-actions{
-  @apply bg-slate-700;
+  @apply bg-slate-700/60;
 }
 .swipeable-list-item__trailing-actions {
-  @apply bg-red-600;
+  @apply bg-red-600/60;
 }
 .swipeable-list .swipe-action {
   @apply flex justify-center items-center

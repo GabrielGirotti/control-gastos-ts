@@ -27,7 +27,7 @@ export const ExpenseDetail = ({ expense }: ExpenseDetailProps) => {
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => {}} children={"Actualizar"}></SwipeAction>
+      <SwipeAction onClick={() => dispatch({type: "get-expense-id", payload: {id: expense.id}})} children={"Actualizar"}></SwipeAction>
     </LeadingActions>
   );
 
@@ -50,7 +50,7 @@ export const ExpenseDetail = ({ expense }: ExpenseDetailProps) => {
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
       >
-        <div className=" bg-white shadow-xl p-10 w-full border-b border-gray-200 flex gap-5 items-center ">
+        <div className=" bg-white shadow-xl p-10 w-full border-b border-gray-200 flex gap-5 items-center cursor-pointer">
           <div>
             <img
               src={`/icono_${categoryInfo.icon}.svg`}

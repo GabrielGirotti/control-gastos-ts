@@ -2,7 +2,7 @@ import { categories } from "../data/categories";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { DraftExpense, Value } from "../types";
 import ErrorMessage from "./ErrorMessage";
 import { useBudget } from "../hooks/useBudget";
@@ -15,7 +15,17 @@ export default function ExpenseForm() {
     date: new Date(),
   });
 
-  const { dispatch } = useBudget();
+  const { dispatch, state } = useBudget();
+
+  useEffect(() => {
+    if (state.editingId) {
+      const expenseToEdit = state.expenses.filter(
+        (exp) => exp.id === state.editingId
+      )[0];
+
+      setExpense(expenseToEdit);
+    }
+  }, [state.editingId]);
 
   const handleChange = (
     e:
@@ -57,7 +67,7 @@ export default function ExpenseForm() {
 
   return (
     <form className=" space-y-5" onSubmit={handleSubmit}>
-      <legend className=" uppercase border-b-4 py-2 text-center text-2xl font-black  font-lato text-slate-700">
+      <legend className="  border-b-4 py-2 text-center text-2xl font-black  font-lato text-slate-700">
         Nuevo Gasto
       </legend>
       {error && <ErrorMessage>{error}</ErrorMessage>}

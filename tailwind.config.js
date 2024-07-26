@@ -8,6 +8,9 @@ export default {
         inter: ["Inter", "sans-serif"],
         DMsans: ["DM Sans", "sans-serif"],
       },
+      backgroundImage: {
+        pattern: "url('/src/assets/bg.svg')",
+      },
     },
   },
   plugins: [],

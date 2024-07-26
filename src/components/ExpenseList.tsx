@@ -10,12 +10,12 @@ export const ExpenseList = () => {
   return (
     <div>
       {isEmpty ? (
-        <p className="text-2xl text-gray-400 font-bold text-center font-lato">
+        <p className="text-2xl text-gray-400 font-bold text-center font-lato ">
           Aun no hay gastos...
         </p>
       ) : (
         <>
-          <p className="text-2xl text-gray-400 font-bold text-center mb-8 font-lato">
+          <p className="text-2xl text-gray-400 font-bold text-center mb-4 font-lato">
             Listado de Gastos:
           </p>
           {state.expenses.map((expense) => (
