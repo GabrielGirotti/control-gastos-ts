@@ -2,7 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lato: ["Lato", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        DMsans: ["DM Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

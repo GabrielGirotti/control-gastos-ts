@@ -23,7 +23,7 @@ export default function BudgetForm() {
       <div className=" flex flex-col space-y-5">
         <label
           htmlFor="budget"
-          className=" text-4xl text-blue-600 font-bold text-center"
+          className=" text-2xl text-slate-700 font-bold text-center font-lato"
         >
           Definir presupuesto
         </label>
@@ -41,7 +41,7 @@ export default function BudgetForm() {
       <input
         type="submit"
         value="Definir presupuesto"
-        className=" bg-blue-600 hover:bg-blue-700 cursor-pointer text-white uppercase w-full p-2 font-bold disabled:opacity-40"
+        className=" bg-slate-500 hover:bg-slate-700 cursor-pointer text-white uppercase w-full p-2 font-bold disabled:opacity-40"
         disabled={isValid}
       />
     </form>

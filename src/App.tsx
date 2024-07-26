@@ -12,9 +12,9 @@ function App() {
 
   return (
     <>
-      <header className=" bg-blue-600 py-8 max-h-72">
-        <h1 className=" uppercase text-center font-black text-4xl text-white">
-          Planificador de Gastos
+      <header className=" bg-white py-8 max-h-72 shadow-lg ">
+        <h1 className=" text-center font-black text-2xl text-slate-700 font-lato">
+          Control de Gastos
         </h1>
       </header>
 

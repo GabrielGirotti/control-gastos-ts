@@ -2,7 +2,7 @@ import { categories } from "../data/categories";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { DraftExpense, Value } from "../types";
 import ErrorMessage from "./ErrorMessage";
 import { useBudget } from "../hooks/useBudget";
@@ -47,17 +47,25 @@ export default function ExpenseForm() {
       return;
     }
     dispatch({ type: "add-expense", payload: { expense } });
-    dispatch({type: 'close-modal'})
+    dispatch({ type: "close-modal" });
   };
+
+  const isValid = useMemo(() => {
+    const includes = Object.values(expense).includes("");
+    return includes;
+  }, [expense]);
 
   return (
     <form className=" space-y-5" onSubmit={handleSubmit}>
-      <legend className=" uppercase border-b-4 py-2 text-center text-2xl font-black border-blue-500">
+      <legend className=" uppercase border-b-4 py-2 text-center text-2xl font-black  font-lato text-slate-700">
         Nuevo Gasto
       </legend>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <div className=" flex flex-col gap-2 ">
-        <label htmlFor="expenseName" className=" text-xl">
+        <label
+          htmlFor="expenseName"
+          className=" text-sm font-lato font-semibold text-slate-700"
+        >
           Nombre Gasto:
         </label>
         <input
@@ -71,7 +79,10 @@ export default function ExpenseForm() {
         />
       </div>
       <div className=" flex flex-col gap-2 ">
-        <label htmlFor="amount" className=" text-xl">
+        <label
+          htmlFor="amount"
+          className=" text-sm font-lato font-semibold text-slate-700"
+        >
           Cantidad:
         </label>
         <input
@@ -85,7 +96,10 @@ export default function ExpenseForm() {
         />
       </div>
       <div className=" flex flex-col gap-2 ">
-        <label htmlFor="category" className=" text-xl">
+        <label
+          htmlFor="category"
+          className=" text-sm font-lato font-semibold text-slate-700"
+        >
           Categoria:
         </label>
         <select
@@ -105,7 +119,9 @@ export default function ExpenseForm() {
       </div>
 
       <div className=" flex flex-col gap-2 ">
-        <label className=" text-xl">Fecha Gasto:</label>
+        <label className=" text-sm font-lato font-semibold text-slate-700">
+          Fecha Gasto:
+        </label>
         <DatePicker
           className=" bg-slate-100 p-2 border-0"
           value={expense.date}
@@ -115,8 +131,9 @@ export default function ExpenseForm() {
 
       <input
         type="submit"
-        className=" bg-blue-600 cursor-pointer w-full p-2 uppercase rounded-lg font-bold text-white"
+        className=" disabled:opacity-40 bg-green-500 hover:bg-green-700  cursor-pointer w-full p-2 uppercase rounded-lg font-bold text-white font-lato"
         value="Registrar gasto"
+        disabled={isValid}
       />
     </form>
   );

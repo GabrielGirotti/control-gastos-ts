@@ -5,8 +5,8 @@ type AmountDisplayProps = {
 
 export default function AmountDisplay({ label, amount }: AmountDisplayProps) {
   return (
-    <p className=" text-2xl text-slate-600 font-bold">
-    {label && `${label}:`}   <span className=" font-black text-slate-600">${amount}</span>
+    <p className=" text-2xl text-slate-600 font-bold font-lato">
+    {label && `${label}:`}   <span className=" font-black text-slate-600 font-lato">${amount}</span>
     </p>
   );
 }
