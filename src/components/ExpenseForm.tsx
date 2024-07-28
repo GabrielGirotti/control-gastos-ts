@@ -15,7 +15,9 @@ export default function ExpenseForm() {
     date: new Date(),
   });
 
-  const { dispatch, state } = useBudget();
+  const { dispatch, state, remainBudget } = useBudget();
+  const [error, setError] = useState("");
+  const [prevAmount, setPrevAmount] = useState(0);
 
   useEffect(() => {
     if (state.editingId) {
@@ -24,6 +26,7 @@ export default function ExpenseForm() {
       )[0];
 
       setExpense(expenseToEdit);
+      setPrevAmount(expenseToEdit.amount);
     }
   }, [state.editingId]);
 
@@ -48,16 +51,33 @@ export default function ExpenseForm() {
     });
   };
 
-  const [error, setError] = useState("");
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (Object.values(expense).includes("")) {
       setError("Todos los campos son obligatorios...");
       return;
     }
-    dispatch({ type: "add-expense", payload: { expense } });
-    dispatch({ type: "close-modal" });
+
+    if (expense.amount - prevAmount > remainBudget) {
+      setError("No cuenta con el presupuesto necesario...");
+      return;
+    }
+
+    if (state.editingId) {
+      dispatch({
+        type: "update-expense",
+        payload: { expense: { id: state.editingId, ...expense } },
+      });
+    } else {
+      dispatch({ type: "add-expense", payload: { expense } });
+    }
+    setExpense({
+      amount: 0,
+      expenseName: "",
+      category: "",
+      date: new Date(),
+    });
+    setPrevAmount(0);
   };
 
   const isValid = useMemo(() => {
@@ -68,7 +88,7 @@ export default function ExpenseForm() {
   return (
     <form className=" space-y-5" onSubmit={handleSubmit}>
       <legend className="  border-b-4 py-2 text-center text-2xl font-black  font-lato text-slate-700">
-        Nuevo Gasto
+        {state.editingId ? "Editar Gasto" : "Nuevo Gasto"}
       </legend>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <div className=" flex flex-col gap-2 ">
@@ -142,7 +162,7 @@ export default function ExpenseForm() {
       <input
         type="submit"
         className=" disabled:opacity-40 bg-green-500 hover:bg-green-700  cursor-pointer w-full p-2 uppercase rounded-lg font-bold text-white font-lato"
-        value="Registrar gasto"
+        value={state.editingId ? "Editar Gasto" : "Registrar Gasto"}
         disabled={isValid}
       />
     </form>

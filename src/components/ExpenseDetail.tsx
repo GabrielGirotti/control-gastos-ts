@@ -50,7 +50,7 @@ export const ExpenseDetail = ({ expense }: ExpenseDetailProps) => {
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
       >
-        <div className=" bg-white shadow-xl p-10 w-full border-b border-gray-200 flex gap-5 items-center cursor-pointer">
+        <div className=" bg-slate-700 shadow-xl p-10 w-full border-b border-slate-900 flex gap-5 items-center cursor-pointer">
           <div>
             <img
               src={`/icono_${categoryInfo.icon}.svg`}
@@ -59,13 +59,13 @@ export const ExpenseDetail = ({ expense }: ExpenseDetailProps) => {
             />
           </div>
           <div className="flex-1 ">
-            <p className=" text-sm font-bold uppercase text-slate-600 font-lato">
+            <p className=" text-sm font-bold uppercase text-slate-200 font-lato">
               {categoryInfo.name}
             </p>
-            <p className=" text-lg text-slate-600 font-bold font-lato">
+            <p className=" text-lg text-white font-bold font-lato">
               {expense.expenseName}
             </p>
-            <p className="text-slate-600 text-sm font-lato">
+            <p className="text-slate-200 text-sm font-lato">
               {formatDate(expense.date!.toString())}
             </p>
           </div>

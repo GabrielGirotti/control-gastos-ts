@@ -23,7 +23,7 @@ export default function BudgetForm() {
       <div className=" flex flex-col space-y-5">
         <label
           htmlFor="budget"
-          className=" text-2xl text-slate-700 font-bold text-center font-lato"
+          className=" text-2xl text-slate-200 font-bold text-center font-lato"
         >
           Definir presupuesto
         </label>
